@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
-
+import mock from './mock';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -27,6 +27,9 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles();
+  // dataPoints[0] is equal to today, if at [0] use todaysItake
+  const { data_points: dataPoints } = mock;
+  const [todaysIntake, setTodaysIntake] = useState([]);
 
   return (
     <Box>

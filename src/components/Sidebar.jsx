@@ -52,6 +52,8 @@ const useStyles = makeStyles({
 
 const Sidebar = () => {
   const classes = useStyles();
+
+  // Pull profile from mock data
   const {
     first_name: firstName,
     last_name: lastName,
@@ -59,7 +61,6 @@ const Sidebar = () => {
     weight_kg: weightKg,
     daily_goal: dailyGoal,
   } = mock;
-  console.log(mock);
 
   return (
     <>
