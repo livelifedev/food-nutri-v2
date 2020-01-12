@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, Typography, Divider } from '@material-ui/core';
+import {
+  Avatar, Typography, Divider, LinearProgress,
+} from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import mock from '../mock';
 
@@ -30,15 +32,32 @@ const useStyles = makeStyles({
     lineHeight: '1',
     color: '#FFFFFF',
   },
+  dataText2: {
+    lineHeight: '1',
+  },
   divider: {
     margin: '30px 0',
+  },
+  calInfoWrapper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginBottom: '15px',
+  },
+  calInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
 });
 
 const Sidebar = () => {
   const classes = useStyles();
   const {
-    first_name: firstName, last_name: lastName, height_cm: heightCm, weight_kg: weightKg, daily_goal: dailyGoal,
+    first_name: firstName,
+    last_name: lastName,
+    height_cm: heightCm,
+    weight_kg: weightKg,
+    daily_goal: dailyGoal,
   } = mock;
   console.log(mock);
 
@@ -56,7 +75,21 @@ const Sidebar = () => {
         </Box>
       </Box>
       <Typography component="h2" variant="h5" align="center">{`${firstName} ${lastName}`}</Typography>
+
       <Divider className={classes.divider} />
+
+      <Box className={classes.calInfoWrapper}>
+        <Box className={classes.calInfo}>
+          <Typography className={classes.dataText2} variant="body1" align="left">{`${'N/A'} cal`}</Typography>
+          <Typography className={classes.dataText2} variant="caption" align="left">consumed</Typography>
+        </Box>
+        <Box className={classes.calInfo}>
+          <Typography className={classes.dataText2} variant="body1" align="right">{`${dailyGoal} cal`}</Typography>
+          <Typography className={classes.dataText2} variant="caption" align="right">daily goal</Typography>
+        </Box>
+      </Box>
+
+      <LinearProgress variant="determinate" value={20} />
     </>
   );
 };
