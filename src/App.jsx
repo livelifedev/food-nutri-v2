@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <Box>
-      <Box container className={classes.header}>
+      <Box className={classes.header}>
         <Header />
       </Box>
       <Grid container className={classes.sidebar}>
