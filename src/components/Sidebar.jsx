@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     color: '#FFFFFF',
   },
   dataText2: {
-    lineHeight: '1',
+    lineHeight: '1.3',
   },
   divider: {
     margin: '30px 0',
@@ -63,7 +63,7 @@ const useStyles = makeStyles({
     padding: '0 15px',
   },
   percentage: {
-    marginLeft: '-10px',
+    margin: '2px 0 0 -10px',
   },
 });
 
