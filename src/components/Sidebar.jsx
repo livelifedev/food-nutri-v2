@@ -48,6 +48,23 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
   },
+  mealsInfoWrapper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '15px',
+  },
+  mealsInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profileDetailsWrapper: {
+    padding: '0 15px',
+  },
+  percentage: {
+    marginLeft: '-10px',
+  },
 });
 
 const Sidebar = () => {
@@ -79,18 +96,43 @@ const Sidebar = () => {
 
       <Divider className={classes.divider} />
 
-      <Box className={classes.calInfoWrapper}>
-        <Box className={classes.calInfo}>
-          <Typography className={classes.dataText2} variant="body1" align="left">{`${'N/A'} cal`}</Typography>
-          <Typography className={classes.dataText2} variant="caption" align="left">consumed</Typography>
+      <Box className={classes.profileDetailsWrapper}>
+        <Box className={classes.calInfoWrapper}>
+          <Box className={classes.calInfo}>
+            <Typography className={classes.dataText2} variant="body1" align="left">{`${'N/A'} cal`}</Typography>
+            <Typography className={classes.dataText2} variant="caption" align="left">consumed</Typography>
+          </Box>
+          <Box className={classes.calInfo}>
+            <Typography className={classes.dataText2} variant="body1" align="right">{`${dailyGoal} cal`}</Typography>
+            <Typography className={classes.dataText2} variant="caption" align="right">daily goal</Typography>
+          </Box>
         </Box>
-        <Box className={classes.calInfo}>
-          <Typography className={classes.dataText2} variant="body1" align="right">{`${dailyGoal} cal`}</Typography>
-          <Typography className={classes.dataText2} variant="caption" align="right">daily goal</Typography>
+
+        <LinearProgress variant="determinate" value={20} />
+        <Box display="flex">
+          <Box width="20%" />
+          <Typography className={classes.percentage} variant="caption">20%</Typography>
+        </Box>
+
+        <Box className={classes.mealsInfoWrapper}>
+          <Box className={classes.mealsInfo}>
+            <Typography className={classes.dataText2} variant="body1">{`${'N/A'}`}</Typography>
+            <Typography className={classes.dataText2} variant="caption">Breakfast</Typography>
+          </Box>
+          <Box className={classes.mealsInfo}>
+            <Typography className={classes.dataText2} variant="body1">{`${'N/A'}`}</Typography>
+            <Typography className={classes.dataText2} variant="caption">Lunch</Typography>
+          </Box>
+          <Box className={classes.mealsInfo}>
+            <Typography className={classes.dataText2} variant="body1">{`${'N/A'}`}</Typography>
+            <Typography className={classes.dataText2} variant="caption">Dinner</Typography>
+          </Box>
+          <Box className={classes.mealsInfo}>
+            <Typography className={classes.dataText2} variant="body1">{`${'N/A'}`}</Typography>
+            <Typography className={classes.dataText2} variant="caption">Snacks</Typography>
+          </Box>
         </Box>
       </Box>
-
-      <LinearProgress variant="determinate" value={20} />
     </>
   );
 };
