@@ -67,9 +67,9 @@ const useStyles = makeStyles({
   },
 });
 
-const Sidebar = () => {
+const Sidebar = ({ intakeData }) => {
   const classes = useStyles();
-
+  console.log(intakeData);
   // Pull profile from mock data
   const {
     first_name: firstName,

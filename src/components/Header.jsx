@@ -31,8 +31,28 @@ const useStyles = makeStyles({
   },
 });
 
-const Header = () => {
+const Header = ({
+  cyclePosition, setCyclePosition, cycleLength, dateText,
+}) => {
   const classes = useStyles();
+
+  const cycleForward = () => {
+    setCyclePosition((prev) => {
+      if (prev > 0) {
+        return prev - 1;
+      }
+      return prev;
+    });
+  };
+
+  const cycleBack = () => {
+    setCyclePosition((prev) => {
+      if (prev < cycleLength) {
+        return prev + 1;
+      }
+      return prev;
+    });
+  };
 
   return (
     <Box className={classes.wrapper}>
@@ -50,9 +70,9 @@ const Header = () => {
         />
       </Paper>
       <Box className={classes.nav}>
-        <IconButton><NavigateBeforeIcon /></IconButton>
-        <Typography align="center" variant="h4" component="h2">Today</Typography>
-        <IconButton><NavigateNextIcon /></IconButton>
+        <IconButton onClick={cycleBack}><NavigateBeforeIcon /></IconButton>
+        <Typography align="center" variant="h4" component="h2">{dateText}</Typography>
+        <IconButton onClick={cycleForward}><NavigateNextIcon /></IconButton>
       </Box>
     </Box>
   );
