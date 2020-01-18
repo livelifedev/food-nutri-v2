@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
@@ -30,22 +31,19 @@ const App = () => {
   // dataPoints[0] is equal to today, if at [0] use todaysItake
   // iterate [], item.date, item.intake_list[], .meal_type
   const { data_points: dataPoints } = mock;
-  // const [currentDate, setCurrentDate] = useState(new Date());
-  const currentDate = new Date();
+  const [cyclePosition, setCyclePosition] = useState(0);
   const [dateText, setDateText] = useState('');
   const [todaysIntake, setTodaysIntake] = useState([]);
-  const [cyclePosition, setCyclePosition] = useState(1);
 
   useEffect(() => {
-    currentDate.setDate(currentDate.getDate() - cyclePosition);
+    const date = moment().subtract(cyclePosition, 'days');
+
     if (cyclePosition === 0) setDateText('Today');
     if (cyclePosition === 1) setDateText('Yesterday');
     if (cyclePosition > 1) {
-      setDateText('Yesterday');
+      setDateText(date.format('DD MMMM'));
     }
   }, [cyclePosition]);
-
-  console.log('date', currentDate);
 
   return (
     <Box>

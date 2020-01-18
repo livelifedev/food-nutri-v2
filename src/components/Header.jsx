@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 });
 
 const Header = ({
-  cyclePosition, setCyclePosition, cycleLength, dateText,
+  setCyclePosition, cycleLength, dateText,
 }) => {
   const classes = useStyles();
 
