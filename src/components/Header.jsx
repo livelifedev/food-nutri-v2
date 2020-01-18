@@ -29,6 +29,15 @@ const useStyles = makeStyles({
   icon: {
     marginLeft: '10px',
   },
+  colorPrimary: {
+    color: '#FFFFFF',
+  },
+  input: {
+    '&::placeholder': {
+      color: '#000000',
+      opacity: '1',
+    },
+  },
 });
 
 const Header = ({
@@ -59,20 +68,20 @@ const Header = ({
       <Paper>
         <InputBase
           className={classes.search}
+          classes={{ input: classes.input }}
           placeholder="Search foods..."
           startAdornment={(
             <InputAdornment position="start" className={classes.icon}>
               <SearchIcon />
             </InputAdornment>
-        )}
-          color="primary"
+          )}
           fullWidth
         />
       </Paper>
       <Box className={classes.nav}>
-        <IconButton onClick={cycleBack}><NavigateBeforeIcon /></IconButton>
-        <Typography align="center" variant="h4" component="h2">{dateText}</Typography>
-        <IconButton onClick={cycleForward}><NavigateNextIcon /></IconButton>
+        <IconButton onClick={cycleBack}><NavigateBeforeIcon className={classes.colorPrimary} /></IconButton>
+        <Typography align="center" variant="h4" component="h2" className={classes.colorPrimary}>{dateText}</Typography>
+        <IconButton onClick={cycleForward}><NavigateNextIcon className={classes.colorPrimary} /></IconButton>
       </Box>
     </Box>
   );
