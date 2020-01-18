@@ -78,6 +78,11 @@ const Sidebar = ({ intakeData }) => {
     weight_kg: weightKg,
     daily_goal: dailyGoal,
   } = mock;
+  const breakfastCals = 0;
+  const lunchCals = 0;
+  const dinnerCals = 0;
+  const snackCals = 0;
+  const totalCals = 0;
 
   return (
     <>
@@ -99,7 +104,7 @@ const Sidebar = ({ intakeData }) => {
       <Box className={classes.profileDetailsWrapper}>
         <Box className={classes.calInfoWrapper}>
           <Box className={classes.calInfo}>
-            <Typography className={classes.dataText2} variant="body1" align="left">{`${'N/A'} cal`}</Typography>
+            <Typography className={classes.dataText2} variant="body1" align="left">{`${totalCals} cal`}</Typography>
             <Typography className={classes.dataText2} variant="caption" align="left">consumed</Typography>
           </Box>
           <Box className={classes.calInfo}>
@@ -116,20 +121,20 @@ const Sidebar = ({ intakeData }) => {
 
         <Box className={classes.mealsInfoWrapper}>
           <Box className={classes.mealsInfo}>
-            <Typography className={classes.dataText2} variant="body1">{`${'N/A'}`}</Typography>
+            <Typography className={classes.dataText2} variant="body1">{breakfastCals}</Typography>
             <Typography className={classes.dataText2} variant="caption">Breakfast</Typography>
           </Box>
           <Box className={classes.mealsInfo}>
-            <Typography className={classes.dataText2} variant="body1">{`${'N/A'}`}</Typography>
+            <Typography className={classes.dataText2} variant="body1">{lunchCals}</Typography>
             <Typography className={classes.dataText2} variant="caption">Lunch</Typography>
           </Box>
           <Box className={classes.mealsInfo}>
-            <Typography className={classes.dataText2} variant="body1">{`${'N/A'}`}</Typography>
+            <Typography className={classes.dataText2} variant="body1">{dinnerCals}</Typography>
             <Typography className={classes.dataText2} variant="caption">Dinner</Typography>
           </Box>
           <Box className={classes.mealsInfo}>
-            <Typography className={classes.dataText2} variant="body1">{`${'N/A'}`}</Typography>
-            <Typography className={classes.dataText2} variant="caption">Snacks</Typography>
+            <Typography className={classes.dataText2} variant="body1">{snackCals}</Typography>
+            <Typography className={classes.dataText2} variant="caption">Snack</Typography>
           </Box>
         </Box>
       </Box>
