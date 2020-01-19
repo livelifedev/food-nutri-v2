@@ -65,6 +65,9 @@ const useStyles = makeStyles({
   percentage: {
     margin: '2px 0 0 -10px',
   },
+  bar: {
+    transition: 'none',
+  },
 });
 
 const mapCalories = (arr) => {
@@ -85,6 +88,8 @@ const mapCalories = (arr) => {
   return map;
 };
 
+const calcPercent = (value1, value2) => Math.round((value1 / value2) * 100);
+
 const Sidebar = ({ intakeData }) => {
   const classes = useStyles();
   console.log(intakeData);
@@ -97,6 +102,7 @@ const Sidebar = ({ intakeData }) => {
     daily_goal: dailyGoal,
   } = mock;
   const caloriesMap = mapCalories(intakeData.intake_list);
+  const percentage = calcPercent(caloriesMap.totalCals, dailyGoal);
 
   return (
     <>
@@ -127,10 +133,10 @@ const Sidebar = ({ intakeData }) => {
           </Box>
         </Box>
 
-        <LinearProgress variant="determinate" value={20} />
+        <LinearProgress variant="determinate" value={percentage} classes={{ bar: classes.bar }} />
         <Box display="flex">
-          <Box width="20%" />
-          <Typography className={classes.percentage} variant="caption">20%</Typography>
+          <Box width={`${percentage}%`} />
+          <Typography className={classes.percentage} variant="caption">{`${percentage}%`}</Typography>
         </Box>
 
         <Box className={classes.mealsInfoWrapper}>

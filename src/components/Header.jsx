@@ -72,7 +72,7 @@ const Header = ({
           placeholder="Search foods..."
           startAdornment={(
             <InputAdornment position="start" className={classes.icon}>
-              <SearchIcon />
+              <SearchIcon color="disabled" />
             </InputAdornment>
           )}
           fullWidth
