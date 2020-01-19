@@ -18,9 +18,9 @@ const Main = ({ intakeData }) => {
           <React.Fragment key={item.id}>
             <ListItem>
               <ListItemAvatar>
-                <Avatar variant="square"><BrokenImageIcon /></Avatar>
+                <Avatar variant="square" src={item.thumb}><BrokenImageIcon /></Avatar>
               </ListItemAvatar>
-              <ListItemText primary={item.food_name} secondary="Jan 9, 2014" />
+              <ListItemText primary={item.food_name} secondary={`${item.serving_size} ${item.serving_unit} (${item.serving_weight_grams} g)`} />
             </ListItem>
             <Divider variant="inset" component="li" />
           </React.Fragment>
