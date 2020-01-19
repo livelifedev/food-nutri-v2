@@ -60,7 +60,7 @@ const App = () => {
           <Sidebar intakeData={dataPoints[cyclePosition]} />
         </Grid>
         <Grid item xs={8} className={classes.main}>
-          <Main />
+          <Main intakeData={dataPoints[cyclePosition]} />
         </Grid>
       </Grid>
     </Box>
