@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  InputBase, InputAdornment, Paper, Typography, IconButton,
-} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { Typography, IconButton, Modal } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Box from '@material-ui/core/Box';
+import SearchInput from './SearchInput';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -15,28 +13,21 @@ const useStyles = makeStyles({
     maxWidth: '500px',
     margin: 'auto',
     height: '100%',
-    justifyContent: 'space-evenly',
   },
   nav: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  search: {
-    height: '45px',
-    lineHeight: '0',
-  },
-  icon: {
-    marginLeft: '10px',
-  },
   colorPrimary: {
     color: '#FFFFFF',
   },
-  input: {
-    '&::placeholder': {
-      color: '#000000',
-      opacity: '1',
-    },
+  modalWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '500px',
+    margin: 'auto',
+    outline: 'none',
   },
 });
 
@@ -44,6 +35,21 @@ const Header = ({
   setCyclePosition, cycleLength, dateText,
 }) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+
+  const handleOnChange = (event) => {
+    setOpen(true);
+    setSearchInput(event.target.value);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const cycleForward = () => {
     setCyclePosition((prev) => {
@@ -65,19 +71,12 @@ const Header = ({
 
   return (
     <Box className={classes.wrapper}>
-      <Paper>
-        <InputBase
-          className={classes.search}
-          classes={{ input: classes.input }}
-          placeholder="Search foods..."
-          startAdornment={(
-            <InputAdornment position="start" className={classes.icon}>
-              <SearchIcon color="disabled" />
-            </InputAdornment>
-          )}
-          fullWidth
-        />
-      </Paper>
+      <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus={false} />
+      <Modal open={open} onClose={handleClose}>
+        <Box className={classes.modalWrapper}>
+          <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus />
+        </Box>
+      </Modal>
       <Box className={classes.nav}>
         <IconButton onClick={cycleBack}><NavigateBeforeIcon className={classes.colorPrimary} /></IconButton>
         <Typography align="center" variant="h4" component="h2" className={classes.colorPrimary}>{dateText}</Typography>
