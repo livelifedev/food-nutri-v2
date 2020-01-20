@@ -4,8 +4,7 @@ import {
 } from '@material-ui/core';
 import BrokenImageIcon from '@material-ui/icons/BrokenImage';
 import Box from '@material-ui/core/Box';
-
-const addIdToList = ((arr) => arr.map((item, index) => ({ ...item, id: index })));
+import { addIdToList } from '../utils/helpers';
 
 const Main = ({ intakeData }) => {
   const { intake_list: intakeList } = intakeData;

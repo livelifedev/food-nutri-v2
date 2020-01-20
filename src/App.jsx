@@ -28,8 +28,6 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles();
-  // dataPoints[0] is equal to today, if at [0] use todaysItake
-  // iterate [], item.date, item.intake_list[], .meal_type
   const { data_points: dataPoints } = mock;
   const [cyclePosition, setCyclePosition] = useState(0);
   const [dateText, setDateText] = useState('');

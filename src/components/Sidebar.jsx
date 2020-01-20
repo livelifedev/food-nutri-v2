@@ -4,6 +4,7 @@ import {
   Avatar, Typography, Divider, LinearProgress,
 } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import { mapCalories, calcPercent } from '../utils/helpers';
 import mock from '../mock';
 
 const useStyles = makeStyles({
@@ -69,26 +70,6 @@ const useStyles = makeStyles({
     transition: 'none',
   },
 });
-
-const mapCalories = (arr) => {
-  const map = {
-    breakfastCals: 0,
-    lunchCals: 0,
-    dinnerCals: 0,
-    snackCals: 0,
-    totalCals: 0,
-  };
-  arr.forEach((item) => {
-    if (item.meal_type === 'breakfast') map.breakfastCals += item.nf_calories;
-    if (item.meal_type === 'lunch') map.lunchCals += item.nf_calories;
-    if (item.meal_type === 'dinner') map.dinnerCals += item.nf_calories;
-    if (item.meal_type === 'snack') map.snackCals += item.nf_calories;
-    map.totalCals += item.nf_calories;
-  });
-  return map;
-};
-
-const calcPercent = (value1, value2) => Math.round((value1 / value2) * 100);
 
 const Sidebar = ({ intakeData }) => {
   const classes = useStyles();
