@@ -5,6 +5,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Box from '@material-ui/core/Box';
 import SearchInput from './SearchInput';
+import SearchDropdown from './SearchDropdown';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: '8px',
   },
   colorPrimary: {
     color: '#FFFFFF',
@@ -75,6 +77,7 @@ const Header = ({
       <Modal open={open} onClose={handleClose}>
         <Box className={classes.modalWrapper}>
           <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus />
+          <SearchDropdown />
         </Box>
       </Modal>
       <Box className={classes.nav}>
