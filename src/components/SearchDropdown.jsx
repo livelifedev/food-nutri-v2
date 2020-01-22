@@ -10,7 +10,8 @@ const useStyles = makeStyles({
 
 });
 
-const SearchDropdown = () => {
+const SearchDropdown = ({ food }) => {
+  console.log('food', food);
   const classes = useStyles();
 
   return (

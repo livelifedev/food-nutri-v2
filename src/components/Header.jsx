@@ -7,6 +7,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import SearchInput from './SearchInput';
 import SearchDropdown from './SearchDropdown';
+import { requestFood } from '../utils/api';
 
 
 const useStyles = makeStyles({
@@ -41,10 +42,19 @@ const Header = ({
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+  const [food, setFood] = useState([]);
 
-  const handleOnChange = (event) => {
+  const handleOnChange = async (event) => {
+    const { value } = event.target;
     setOpen(true);
-    setSearchInput(event.target.value);
+    setSearchInput(value);
+
+    if (value.length > 0) {
+      const results = await requestFood(value);
+      setFood([...results.common, ...results.branded]);
+    } else {
+      setFood([]);
+    }
   };
 
   const handleOpen = () => {
@@ -79,7 +89,7 @@ const Header = ({
       <Modal open={open} onClose={handleClose}>
         <Box className={classes.modalWrapper}>
           <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus />
-          <SearchDropdown />
+          <SearchDropdown food={food} />
         </Box>
       </Modal>
       <Box className={classes.nav}>
