@@ -1,9 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Avatar, Typography, Divider, LinearProgress,
+  Avatar, Typography, Divider, LinearProgress, Box,
 } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
 import { mapCalories, calcPercent } from '../utils/helpers';
 import mock from '../mock';
 

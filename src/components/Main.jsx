@@ -1,9 +1,8 @@
 import React from 'react';
 import {
-  List, ListItem, ListItemText, ListItemAvatar, Avatar, Divider,
+  List, ListItem, ListItemText, ListItemAvatar, Avatar, Divider, Box,
 } from '@material-ui/core';
 import BrokenImageIcon from '@material-ui/icons/BrokenImage';
-import Box from '@material-ui/core/Box';
 import { addIdToList } from '../utils/helpers';
 
 const Main = ({ intakeData }) => {

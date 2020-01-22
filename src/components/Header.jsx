@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, IconButton, Modal } from '@material-ui/core';
+import {
+  Typography, IconButton, Modal, Box,
+} from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import Box from '@material-ui/core/Box';
 import SearchInput from './SearchInput';
 import SearchDropdown from './SearchDropdown';
+
 
 const useStyles = makeStyles({
   wrapper: {
