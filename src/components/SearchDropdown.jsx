@@ -5,7 +5,7 @@ import FoodList from './FoodList';
 
 const useStyles = makeStyles({
   dropdown: {
-    maxHeight: '90vh',
+    maxHeight: 'calc(100vh - 85px)',
     overflowY: 'scroll',
   },
 });
