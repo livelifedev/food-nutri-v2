@@ -12,12 +12,16 @@ const useStyles = makeStyles({
 
 const SearchDropdown = ({ commonFood, brandedFood }) => {
   const classes = useStyles();
+  const commonFoodLength = commonFood.length;
+  const brandFoodLength = brandedFood.length;
+  const noResults = !commonFoodLength && !brandFoodLength;
 
   return (
     <Paper className={classes.dropdown}>
-      {commonFood.length ? <FoodList title="Common" foodList={commonFood} /> : null}
-      {commonFood.length && brandedFood.length ? <Divider /> : null}
-      {brandedFood.length ? <FoodList title="Branded" foodList={brandedFood} /> : null}
+      {noResults ? <FoodList title="No Results" foodList={[]} /> : null}
+      {commonFoodLength ? <FoodList title="Common" foodList={commonFood} /> : null}
+      <Divider />
+      {brandFoodLength ? <FoodList title="Branded" foodList={brandedFood} /> : null}
     </Paper>
   );
 };
