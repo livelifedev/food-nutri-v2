@@ -43,18 +43,27 @@ const Header = ({
   const [open, setOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [food, setFood] = useState([]);
+  const [timer, setTimer] = useState(0);
 
-  const handleOnChange = async (event) => {
-    const { value } = event.target;
-    setOpen(true);
-    setSearchInput(value);
-
+  // Call API with search query after set time, time cleared with each keystroke
+  const search = (value) => setTimeout(async () => {
     if (value.length > 0) {
       const results = await requestFood(value);
+
       setFood([...results.common, ...results.branded]);
     } else {
       setFood([]);
     }
+  }, 150);
+
+  const handleOnChange = async (event) => {
+    const { value } = event.target;
+
+    if (timer) clearTimeout(timer);
+
+    setOpen(true);
+    setSearchInput(value);
+    setTimer(search(value));
   };
 
   const handleOpen = () => {

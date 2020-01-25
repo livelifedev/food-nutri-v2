@@ -10,8 +10,8 @@ export const requestFood = async (query) => {
     method: 'GET',
     headers,
   });
-  const data = await response.json();
-  return data;
+
+  return response.json();
 };
 
 export const requestFoodDetails = async (query) => {
@@ -21,6 +21,6 @@ export const requestFoodDetails = async (query) => {
     headers,
     body: JSON.stringify({ query }),
   });
-  const data = await response.json();
-  return data;
+
+  return response.json();
 };
