@@ -12,6 +12,9 @@ const useStyles = makeStyles({
     letterSpacing: '2px',
     padding: '5px 0 0 15px',
   },
+  capital: {
+    textTransform: 'capitalize',
+  },
 });
 
 const FoodList = ({ title, foodList }) => {
@@ -22,12 +25,12 @@ const FoodList = ({ title, foodList }) => {
       <Typography variant="overline" component="p" className={classes.listHeading}>{title}</Typography>
       <List>
         {foodList.map((item, index) => (
-          <React.Fragment key={item}>
+          <React.Fragment key={item.food_name}>
             <ListItem>
               <ListItemAvatar>
-                <Avatar variant="square" src=""><BrokenImageIcon /></Avatar>
+                <Avatar variant="square" src={item.photo.thumb}><BrokenImageIcon /></Avatar>
               </ListItemAvatar>
-              <ListItemText primary={`Food name ${item}`} />
+              <ListItemText className={classes.capital} primary={item.food_name} />
             </ListItem>
             {foodList[index + 1] ? <Divider variant="inset" component="li" /> : null}
           </React.Fragment>

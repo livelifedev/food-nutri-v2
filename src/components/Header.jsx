@@ -9,7 +9,6 @@ import SearchInput from './SearchInput';
 import SearchDropdown from './SearchDropdown';
 import { requestFood } from '../utils/api';
 
-
 const useStyles = makeStyles({
   wrapper: {
     display: 'flex',
