@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Avatar, Typography, Divider, LinearProgress, Box,
+  Avatar, Typography, Divider, Box,
 } from '@material-ui/core';
 import { mapCalories, calcPercent } from '../utils/helpers';
 import mock from '../mock';
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
   mealsInfoWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginTop: '15px',
+    marginTop: '40px',
   },
   mealsInfo: {
     display: 'flex',
@@ -63,10 +63,17 @@ const useStyles = makeStyles({
     padding: '0 15px',
   },
   percentage: {
-    margin: '2px 0 0 -10px',
+    margin: '8px 0 0 -10px',
   },
-  bar: {
-    transition: 'none',
+  outerBar: {
+    height: '5px',
+    width: '100%',
+    backgroundColor: '#DAC2FB',
+  },
+  innerBar: {
+    transition: 'width 0.6s',
+    height: '5px',
+    backgroundColor: '#6202EE',
   },
 });
 
@@ -113,9 +120,8 @@ const Sidebar = ({ intakeData }) => {
           </Box>
         </Box>
 
-        <LinearProgress variant="determinate" value={percentage} classes={{ bar: classes.bar }} />
-        <Box display="flex">
-          <Box width={`${percentage}%`} />
+        <Box display="flex" className={classes.outerBar}>
+          <Box className={classes.innerBar} width={`${percentage}%`} />
           <Typography className={classes.percentage} variant="caption">{`${percentage}%`}</Typography>
         </Box>
 
