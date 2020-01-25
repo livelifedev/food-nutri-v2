@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography, IconButton, Modal, Box,
@@ -47,14 +47,12 @@ const Header = ({
 
   // Call API with search query after set time, time cleared with each keystroke
   const search = (value) => setTimeout(async () => {
-    if (value.length > 0) {
+    if (value.length) {
       const { common, branded } = await requestFood(value);
+
       setCommonFood(common);
       setBrandedFood(branded);
       console.log(common, branded);
-    } else {
-      setCommonFood([]);
-      setBrandedFood([]);
     }
   }, 150);
 
@@ -81,6 +79,7 @@ const Header = ({
       if (prev > 0) {
         return prev - 1;
       }
+
       return prev;
     });
   };
@@ -90,9 +89,18 @@ const Header = ({
       if (prev < cycleLength) {
         return prev + 1;
       }
+
       return prev;
     });
   };
+
+  // Clear food arrays if search value is empty
+  useEffect(() => {
+    if (!searchInput && (commonFood.length || brandedFood.length)) {
+      setCommonFood([]);
+      setBrandedFood([]);
+    }
+  }, [searchInput, commonFood, brandedFood]);
 
   return (
     <Box className={classes.wrapper}>
