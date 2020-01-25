@@ -19,6 +19,7 @@ const useStyles = makeStyles({
       color: '#000000',
       opacity: '1',
     },
+    fontWeight: '500',
   },
 });
 

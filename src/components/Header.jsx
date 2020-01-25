@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '500px',
+    maxWidth: '450px',
     margin: 'auto',
     height: '100%',
   },
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   modalWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '500px',
+    maxWidth: '450px',
     margin: 'auto',
     outline: 'none',
   },
