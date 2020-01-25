@@ -1,20 +1,4 @@
 // Header helpers
-export const categoriseFood = (foodList) => {
-  const foodMap = {
-    common: [],
-    branded: [],
-  };
-
-  foodList.forEach((food) => {
-    if (food.nix_item_id) {
-      foodMap.branded.push(food);
-    } else {
-      foodMap.common.push(food);
-    }
-  });
-
-  return foodMap;
-};
 
 // Sidebar helpers
 export const mapCalories = (arr) => {

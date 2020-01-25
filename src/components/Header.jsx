@@ -41,17 +41,20 @@ const Header = ({
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-  const [food, setFood] = useState([]);
+  const [commonFood, setCommonFood] = useState([]);
+  const [brandedFood, setBrandedFood] = useState([]);
   const [timer, setTimer] = useState(0);
 
   // Call API with search query after set time, time cleared with each keystroke
   const search = (value) => setTimeout(async () => {
     if (value.length > 0) {
-      const results = await requestFood(value);
-
-      setFood([...results.common, ...results.branded]);
+      const { common, branded } = await requestFood(value);
+      setCommonFood(common);
+      setBrandedFood(branded);
+      console.log(common, branded);
     } else {
-      setFood([]);
+      setCommonFood([]);
+      setBrandedFood([]);
     }
   }, 150);
 
@@ -97,7 +100,7 @@ const Header = ({
       <Modal open={open} onClose={handleClose}>
         <Box className={classes.modalWrapper}>
           <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus />
-          <SearchDropdown food={food} />
+          <SearchDropdown commonFood={commonFood} brandedFood={brandedFood} />
         </Box>
       </Modal>
       <Box className={classes.nav}>
