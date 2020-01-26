@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const FoodList = ({ title, foodList }) => {
+const FoodList = ({ title, foodList, handleOnClick }) => {
   const classes = useStyles();
 
   return (
@@ -29,7 +29,7 @@ const FoodList = ({ title, foodList }) => {
       <List>
         {foodList.map((item, index) => (
           <React.Fragment key={item.brand_name_item_name || item.food_name}>
-            <ListItem>
+            <ListItem button onClick={handleOnClick}>
               <ListItemAvatar>
                 <Avatar variant="square" src={item.photo.thumb}><BrokenImageIcon /></Avatar>
               </ListItemAvatar>

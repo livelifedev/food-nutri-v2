@@ -66,6 +66,7 @@ const useStyles = makeStyles({
     margin: '8px 0 0 -10px',
   },
   outerBar: {
+    display: 'flex',
     height: '5px',
     width: '100%',
     backgroundColor: '#DAC2FB',
@@ -120,7 +121,7 @@ const Sidebar = ({ intakeData }) => {
           </Box>
         </Box>
 
-        <Box display="flex" className={classes.outerBar}>
+        <Box className={classes.outerBar}>
           <Box className={classes.innerBar} width={`${percentage}%`} />
           <Typography className={classes.percentage} variant="caption">{`${percentage}%`}</Typography>
         </Box>
