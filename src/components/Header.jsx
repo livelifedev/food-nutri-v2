@@ -7,6 +7,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import SearchInput from './SearchInput';
 import SearchDropdown from './SearchDropdown';
+import AddButton from './AddButton';
 import { requestFood } from '../utils/api';
 
 const useStyles = makeStyles({
@@ -103,20 +104,24 @@ const Header = ({
   }, [searchInput, commonFood, brandedFood]);
 
   return (
-    <Box className={classes.wrapper}>
-      <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus={false} />
-      <Modal open={open} onClose={handleClose}>
-        <Box className={classes.modalWrapper}>
-          <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus />
-          <SearchDropdown commonFood={commonFood} brandedFood={brandedFood} />
+    <>
+      <Box className={classes.wrapper}>
+        <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus={false} />
+        <Modal open={open} onClose={handleClose}>
+          <Box className={classes.modalWrapper}>
+            <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus />
+            <SearchDropdown commonFood={commonFood} brandedFood={brandedFood} />
+          </Box>
+        </Modal>
+        <Box className={classes.nav}>
+          <IconButton onClick={cycleBack}><NavigateBeforeIcon className={classes.colorPrimary} /></IconButton>
+          <Typography align="center" variant="h4" component="h2" className={classes.colorPrimary}>{dateText}</Typography>
+          <IconButton onClick={cycleForward}><NavigateNextIcon className={classes.colorPrimary} /></IconButton>
         </Box>
-      </Modal>
-      <Box className={classes.nav}>
-        <IconButton onClick={cycleBack}><NavigateBeforeIcon className={classes.colorPrimary} /></IconButton>
-        <Typography align="center" variant="h4" component="h2" className={classes.colorPrimary}>{dateText}</Typography>
-        <IconButton onClick={cycleForward}><NavigateNextIcon className={classes.colorPrimary} /></IconButton>
       </Box>
-    </Box>
+
+      <AddButton handleOnClick={handleOpen} />
+    </>
   );
 };
 
