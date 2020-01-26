@@ -13,6 +13,8 @@ const useStyles = makeStyles({
   },
   icon: {
     marginLeft: '10px',
+    color: '#7A7A7A',
+    cursor: 'pointer',
   },
   input: {
     '&::placeholder': {
@@ -39,7 +41,7 @@ const SearchInput = ({
         autoFocus={autoFocus}
         startAdornment={(
           <InputAdornment position="start" className={classes.icon}>
-            <SearchIcon color="disabled" onClick={handleOpen} />
+            <SearchIcon onClick={handleOpen} />
           </InputAdornment>
                 )}
         fullWidth
