@@ -1,10 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Dialog, DialogActions, DialogContent, Typography, Avatar, TextField, Select, Button, Box,
+  Dialog, DialogActions, DialogContent, Typography, Avatar, TextField, MenuItem, InputBase, Select, Button, Box,
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import BrokenImageIcon from '@material-ui/icons/BrokenImage';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 const useStyles = makeStyles({
   dialog: {
@@ -31,10 +32,25 @@ const useStyles = makeStyles({
     backgroundColor: '#6202EE',
     color: '#FFFFFF',
   },
+  selectDropdown: {
+    backgroundColor: '#E7E8E7',
+    height: '45px',
+    borderRadius: '4px',
+  },
+  input: {
+    border: 'none',
+    padding: '0 10px 0 15px',
+    '&:focus': {
+      backgroundColor: '#E7E8E7',
+    },
+  },
 });
 
 const FoodDialog = ({ open, handleClose }) => {
   const classes = useStyles();
+  const replaceSelectIcon = ({ className }) => (
+    <KeyboardArrowDownIcon className={className} />
+  );
 
   return (
     <>
@@ -45,11 +61,23 @@ const FoodDialog = ({ open, handleClose }) => {
         </Box>
         <CloseIcon className={classes.closeButton} onClick={handleClose} />
         <DialogContent dividers>
-          <TextField fullWidth />
+          <TextField
+            fullWidth
+          />
         </DialogContent>
         <DialogContent>
           <Typography variant="button">Add To Today</Typography>
-          <Select fullWidth />
+          <Select
+            fullWidth
+            variant="outlined"
+            IconComponent={replaceSelectIcon}
+            className={classes.selectDropdown}
+            input={<InputBase classes={{ input: classes.input }} />}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} variant="contained" className={classes.addButton}>Add</Button>
