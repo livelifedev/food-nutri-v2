@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 
 const SearchDropdown = ({ commonFood, brandedFood }) => {
   const classes = useStyles();
-  const [openDialog, setOpenDialog] = useState(true);
+  const [openDialog, setOpenDialog] = useState(false);
   const commonFoodLength = commonFood.length;
   const brandFoodLength = brandedFood.length;
   const noResults = !commonFoodLength && !brandFoodLength;
