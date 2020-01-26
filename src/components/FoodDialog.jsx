@@ -1,11 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Dialog, DialogActions, DialogContent, Typography, Avatar, TextField, MenuItem, InputBase, Select, Button, Box,
+  Dialog, DialogActions, DialogContent, Typography, Avatar, TextField, MenuItem, InputBase, Select, Button, InputAdornment, Box,
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import BrokenImageIcon from '@material-ui/icons/BrokenImage';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 const useStyles = makeStyles({
   dialog: {
@@ -44,6 +45,26 @@ const useStyles = makeStyles({
       backgroundColor: '#E7E8E7',
     },
   },
+  adornmentWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  adornmentSize: {
+    width: '20px',
+    height: '20px',
+  },
+  arrowDown: {
+    marginBottom: '-8px',
+  },
+  servingsSelect: {
+    width: '120px',
+  },
+  paddingNone: {
+    padding: '15px 0',
+  },
+  buttonWrapper: {
+    padding: '0 0 5px 0',
+  },
 });
 
 const FoodDialog = ({ open, handleClose }) => {
@@ -51,6 +72,15 @@ const FoodDialog = ({ open, handleClose }) => {
   const replaceSelectIcon = ({ className }) => (
     <KeyboardArrowDownIcon className={className} />
   );
+  const inputProps = {
+    endAdornment: (
+      <InputAdornment position="end">
+        <Box className={classes.adornmentWrapper}>
+          <KeyboardArrowUpIcon className={`${classes.adornmentSize} ${classes.arrowDown}`} />
+          <KeyboardArrowDownIcon className={classes.adornmentSize} />
+        </Box>
+      </InputAdornment>),
+  };
 
   return (
     <>
@@ -60,12 +90,17 @@ const FoodDialog = ({ open, handleClose }) => {
           <Typography variant="h5" component="h2">Food Dialog</Typography>
         </Box>
         <CloseIcon className={classes.closeButton} onClick={handleClose} />
-        <DialogContent dividers>
+        <DialogContent dividers className={classes.paddingNone}>
           <TextField
-            fullWidth
+            label="Servings"
+            defaultValue="0.0"
+            helperText="Units"
+            variant="filled"
+            InputProps={inputProps}
+            className={classes.servingsSelect}
           />
         </DialogContent>
-        <DialogContent>
+        <DialogContent className={classes.paddingNone}>
           <Typography variant="button">Add To Today</Typography>
           <Select
             fullWidth
@@ -79,7 +114,7 @@ const FoodDialog = ({ open, handleClose }) => {
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={classes.buttonWrapper}>
           <Button onClick={handleClose} variant="contained" className={classes.addButton}>Add</Button>
         </DialogActions>
       </Dialog>
