@@ -52,6 +52,7 @@ const useStyles = makeStyles({
   adornmentSize: {
     width: '20px',
     height: '20px',
+    cursor: 'pointer',
   },
   arrowDown: {
     marginBottom: '-8px',
@@ -59,11 +60,24 @@ const useStyles = makeStyles({
   servingsSelect: {
     width: '120px',
   },
+  servingsContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   paddingNone: {
     padding: '15px 0',
   },
   buttonWrapper: {
     padding: '0 0 5px 0',
+  },
+  info: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingTop: '2px',
+  },
+  dataText: {
+    fontSize: '1.6rem',
   },
 });
 
@@ -76,8 +90,8 @@ const FoodDialog = ({ open, handleClose }) => {
     endAdornment: (
       <InputAdornment position="end">
         <Box className={classes.adornmentWrapper}>
-          <KeyboardArrowUpIcon className={`${classes.adornmentSize} ${classes.arrowDown}`} />
-          <KeyboardArrowDownIcon className={classes.adornmentSize} />
+          <KeyboardArrowUpIcon className={`${classes.adornmentSize} ${classes.arrowDown}`} onClick={() => console.log('up')} />
+          <KeyboardArrowDownIcon className={classes.adornmentSize} onClick={() => console.log('down')} />
         </Box>
       </InputAdornment>),
   };
@@ -89,8 +103,10 @@ const FoodDialog = ({ open, handleClose }) => {
           <Avatar variant="square" src="" className={classes.avatar}><BrokenImageIcon /></Avatar>
           <Typography variant="h5" component="h2">Food Dialog</Typography>
         </Box>
+
         <CloseIcon className={classes.closeButton} onClick={handleClose} />
-        <DialogContent dividers className={classes.paddingNone}>
+
+        <DialogContent dividers className={`${classes.paddingNone} ${classes.servingsContainer}`}>
           <TextField
             label="Servings"
             defaultValue="0.0"
@@ -99,7 +115,18 @@ const FoodDialog = ({ open, handleClose }) => {
             InputProps={inputProps}
             className={classes.servingsSelect}
           />
+          <Box display="flex">
+            <Box className={classes.info}>
+              <Typography className={classes.dataText} variant="h5">100</Typography>
+              <Typography variant="subtitle2">grams</Typography>
+            </Box>
+            <Box className={classes.info} paddingLeft="20px">
+              <Typography className={classes.dataText} variant="h5">200</Typography>
+              <Typography variant="subtitle2">calories</Typography>
+            </Box>
+          </Box>
         </DialogContent>
+
         <DialogContent className={classes.paddingNone}>
           <Typography variant="button">Add To Today</Typography>
           <Select
@@ -108,12 +135,15 @@ const FoodDialog = ({ open, handleClose }) => {
             IconComponent={replaceSelectIcon}
             className={classes.selectDropdown}
             input={<InputBase classes={{ input: classes.input }} />}
+            defaultValue="Breakfast"
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value="Breakfast">Breakfast</MenuItem>
+            <MenuItem value="Lunch">Lunch</MenuItem>
+            <MenuItem value="Dinner">Dinner</MenuItem>
+            <MenuItem value="Snack">Snack</MenuItem>
           </Select>
         </DialogContent>
+
         <DialogActions className={classes.buttonWrapper}>
           <Button onClick={handleClose} variant="contained" className={classes.addButton}>Add</Button>
         </DialogActions>
