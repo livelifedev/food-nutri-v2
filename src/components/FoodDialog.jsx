@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Dialog, DialogActions, DialogContent, Typography, Avatar, TextField, MenuItem, InputBase, Select, Button, InputAdornment, Box,
@@ -7,6 +7,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import BrokenImageIcon from '@material-ui/icons/BrokenImage';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import { roundToDecimal } from '../utils/helpers';
+
 
 const useStyles = makeStyles({
   dialog: {
@@ -59,6 +61,12 @@ const useStyles = makeStyles({
   },
   servingsSelect: {
     width: '120px',
+    '& label.Mui-focused': {
+      color: '#6202EE',
+    },
+    '& .MuiFilledInput-underline:after': {
+      borderBottomColor: '#6202EE',
+    },
   },
   servingsContainer: {
     display: 'flex',
@@ -83,18 +91,29 @@ const useStyles = makeStyles({
 
 const FoodDialog = ({ open, handleClose }) => {
   const classes = useStyles();
-  const replaceSelectIcon = ({ className }) => (
-    <KeyboardArrowDownIcon className={className} />
-  );
+  const [spinner, setSpinner] = useState(0);
+
+  const spinUp = () => {
+    setSpinner((prev) => roundToDecimal(prev + 0.1));
+  };
+
+  const spinDown = () => {
+    setSpinner((prev) => (prev > 0 ? roundToDecimal(prev - 0.1) : 0));
+  };
+
   const inputProps = {
     endAdornment: (
       <InputAdornment position="end">
         <Box className={classes.adornmentWrapper}>
-          <KeyboardArrowUpIcon className={`${classes.adornmentSize} ${classes.arrowDown}`} onClick={() => console.log('up')} />
-          <KeyboardArrowDownIcon className={classes.adornmentSize} onClick={() => console.log('down')} />
+          <KeyboardArrowUpIcon className={`${classes.adornmentSize} ${classes.arrowDown}`} onClick={spinUp} />
+          <KeyboardArrowDownIcon className={classes.adornmentSize} onClick={spinDown} />
         </Box>
       </InputAdornment>),
   };
+
+  const replaceSelectIcon = ({ className }) => (
+    <KeyboardArrowDownIcon className={className} />
+  );
 
   return (
     <>
@@ -109,7 +128,7 @@ const FoodDialog = ({ open, handleClose }) => {
         <DialogContent dividers className={`${classes.paddingNone} ${classes.servingsContainer}`}>
           <TextField
             label="Servings"
-            defaultValue="0.0"
+            value={(spinner).toFixed(1)}
             helperText="Units"
             variant="filled"
             InputProps={inputProps}

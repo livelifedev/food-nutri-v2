@@ -1,4 +1,5 @@
 // Header helpers
+export const roundToDecimal = (val) => Math.round(val * 10) / 10;
 
 // Sidebar helpers
 export const mapCalories = (arr) => {
