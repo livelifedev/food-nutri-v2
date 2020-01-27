@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SearchDropdown = ({ commonFood, brandedFood }) => {
+const SearchDropdown = ({ commonFood, brandedFood, setTodaysIntake }) => {
   const classes = useStyles();
   const [foodData, setFoodData] = useState();
   const [openDialog, setOpenDialog] = useState(false);
@@ -39,6 +39,22 @@ const SearchDropdown = ({ commonFood, brandedFood }) => {
     setOpenDialog(false);
   };
 
+  const handleOnSubmit = (data) => {
+    const intake = {
+      nix_item_id: foodData.nix_item_id,
+      food_name: foodData.food_name,
+      serving_qty: foodData.serving_qty,
+      serving_unit: foodData.serving_unit,
+      serving_weight_grams: foodData.serving_weight_grams,
+      nf_calories: foodData.nf_calories,
+      serving_size: data.spinner,
+      meal_type: data.mealType,
+      thumb: foodData.photo.thumb,
+    };
+    setTodaysIntake((prev) => [...prev, intake]);
+    setOpenDialog(false);
+  };
+
   return (
     <>
       <Paper className={classes.dropdown}>
@@ -48,7 +64,7 @@ const SearchDropdown = ({ commonFood, brandedFood }) => {
         {brandFoodLength ? <FoodList title="Branded" foodList={brandedFood} handleOnClick={handleOnClick} /> : null}
       </Paper>
 
-      {foodData ? <FoodDialog open={openDialog} handleClose={handleClose} foodData={foodData} /> : null}
+      {foodData ? <FoodDialog open={openDialog} handleClose={handleClose} handleOnSubmit={handleOnSubmit} foodData={foodData} /> : null}
     </>
   );
 };

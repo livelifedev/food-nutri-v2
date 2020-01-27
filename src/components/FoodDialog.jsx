@@ -109,7 +109,9 @@ const useStyles = makeStyles({
   },
 });
 
-const FoodDialog = ({ open, handleClose, foodData }) => {
+const FoodDialog = ({
+  open, handleClose, handleOnSubmit, foodData,
+}) => {
   const classes = useStyles();
   const {
     food_name: foodName,
@@ -120,6 +122,7 @@ const FoodDialog = ({ open, handleClose, foodData }) => {
     nf_calories: calories,
     photo,
   } = foodData;
+  const [mealType, setMealType] = useState('breakfast');
   const [spinner, setSpinner] = useState(0);
   const serveMultiplier = 1 / servingQty;
   const servingGrams = serveMultiplier * servingWeightGrams;
@@ -131,6 +134,10 @@ const FoodDialog = ({ open, handleClose, foodData }) => {
 
   const spinDown = () => {
     setSpinner((prev) => (prev > 0 ? roundToDecimal(prev - 0.1) : 0));
+  };
+
+  const handleOnSelect = (event) => {
+    setMealType(event.target.value);
   };
 
   const inputProps = {
@@ -184,20 +191,21 @@ const FoodDialog = ({ open, handleClose, foodData }) => {
           <Select
             fullWidth
             variant="outlined"
+            onChange={handleOnSelect}
             IconComponent={replaceSelectIcon}
             className={classes.selectDropdown}
             input={<InputBase classes={{ input: classes.input }} />}
-            defaultValue="Breakfast"
+            defaultValue="breakfast"
           >
-            <MenuItem value="Breakfast">Breakfast</MenuItem>
-            <MenuItem value="Lunch">Lunch</MenuItem>
-            <MenuItem value="Dinner">Dinner</MenuItem>
-            <MenuItem value="Snack">Snack</MenuItem>
+            <MenuItem value="breakfast">Breakfast</MenuItem>
+            <MenuItem value="lunch">Lunch</MenuItem>
+            <MenuItem value="dinner">Dinner</MenuItem>
+            <MenuItem value="snack">Snack</MenuItem>
           </Select>
         </DialogContent>
 
         <DialogActions className={classes.buttonWrapper}>
-          <Button onClick={handleClose} variant="contained" className={classes.addButton}>Add</Button>
+          <Button onClick={() => handleOnSubmit({ mealType, spinner })} variant="contained" className={classes.addButton}>Add</Button>
         </DialogActions>
       </Dialog>
     </>

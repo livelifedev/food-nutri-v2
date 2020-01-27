@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 });
 
 const Header = ({
-  setCyclePosition, cycleLength, dateText,
+  setCyclePosition, cycleLength, dateText, setTodaysIntake,
 }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -110,7 +110,7 @@ const Header = ({
         <Modal open={open} onClose={handleClose}>
           <Box className={classes.modalWrapper}>
             <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus />
-            <SearchDropdown commonFood={commonFood} brandedFood={brandedFood} />
+            <SearchDropdown commonFood={commonFood} brandedFood={brandedFood} setTodaysIntake={setTodaysIntake} />
           </Box>
         </Modal>
         <Box className={classes.nav}>

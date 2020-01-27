@@ -78,10 +78,8 @@ const useStyles = makeStyles({
   },
 });
 
-const Sidebar = ({ intakeData }) => {
+const Sidebar = ({ intakeData, cycle, todaysIntake }) => {
   const classes = useStyles();
-  console.log(intakeData);
-  // Pull profile from mock data
   const {
     first_name: firstName,
     last_name: lastName,
@@ -89,7 +87,8 @@ const Sidebar = ({ intakeData }) => {
     weight_kg: weightKg,
     daily_goal: dailyGoal,
   } = mock;
-  const caloriesMap = mapCalories(intakeData.intake_list);
+  const intake = cycle ? intakeData[cycle].intake_list : todaysIntake;
+  const caloriesMap = mapCalories(intake);
   const percentage = calcPercent(caloriesMap.totalCals, dailyGoal);
 
   return (

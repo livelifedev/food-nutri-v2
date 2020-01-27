@@ -5,9 +5,9 @@ import {
 import BrokenImageIcon from '@material-ui/icons/BrokenImage';
 import { addIdToList } from '../utils/helpers';
 
-const Main = ({ intakeData }) => {
-  const { intake_list: intakeList } = intakeData;
-  const mappedIntakeList = addIdToList(intakeList);
+const Main = ({ intakeData, cycle, todaysIntake }) => {
+  const intake = cycle ? intakeData[cycle].intake_list : todaysIntake;
+  const mappedIntakeList = addIdToList(intake);
 
   return (
     <Box>

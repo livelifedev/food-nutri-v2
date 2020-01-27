@@ -32,6 +32,8 @@ const App = () => {
   const [dateText, setDateText] = useState('');
   const [todaysIntake, setTodaysIntake] = useState([]);
 
+  console.log('today', todaysIntake);
+
   useEffect(() => {
     const date = moment().subtract(cyclePosition, 'days');
 
@@ -50,14 +52,15 @@ const App = () => {
           setCyclePosition={setCyclePosition}
           cycleLength={dataPoints.length - 1}
           dateText={dateText}
+          setTodaysIntake={setTodaysIntake}
         />
       </Box>
       <Grid container className={classes.sidebar}>
         <Grid item xs={4}>
-          <Sidebar intakeData={dataPoints[cyclePosition]} />
+          <Sidebar intakeData={dataPoints} cycle={cyclePosition} todaysIntake={todaysIntake} />
         </Grid>
         <Grid item xs={8} className={classes.main}>
-          <Main intakeData={dataPoints[cyclePosition]} />
+          <Main intakeData={dataPoints} cycle={cyclePosition} todaysIntake={todaysIntake} />
         </Grid>
       </Grid>
     </Box>
