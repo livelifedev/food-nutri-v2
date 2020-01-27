@@ -20,6 +20,19 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     marginBottom: '15px',
   },
+  subtitle: {
+    fontSize: '1.8rem',
+  },
+  subtitle2: {
+    color: '#797979',
+    padding: '2px 0 5px 0',
+    fontSize: '1.2rem',
+  },
+  subtitle3: {
+    color: '#797979',
+    letterSpacing: '1px',
+    fontSize: '0.8rem',
+  },
   closeButton: {
     position: 'absolute',
     right: '16px',
@@ -121,7 +134,8 @@ const FoodDialog = ({ open, handleClose }) => {
       <Dialog open={open} onClose={handleClose} PaperProps={{ className: classes.dialog }}>
         <Box className={classes.title}>
           <Avatar variant="square" src="" className={classes.avatar}><BrokenImageIcon /></Avatar>
-          <Typography variant="h5" component="h2">Food Dialog</Typography>
+          <Typography variant="h5" component="h2" className={classes.subtitle}>Food Dialog</Typography>
+          <Typography variant="h5" className={classes.subtitle2}>Type</Typography>
         </Box>
 
         <CloseIcon className={classes.closeButton} onClick={handleClose} />
@@ -148,7 +162,7 @@ const FoodDialog = ({ open, handleClose }) => {
         </DialogContent>
 
         <DialogContent className={classes.paddingNone}>
-          <Typography variant="button">Add To Today</Typography>
+          <Typography variant="button" className={classes.subtitle3}>Add To Today</Typography>
           <Select
             fullWidth
             variant="outlined"
