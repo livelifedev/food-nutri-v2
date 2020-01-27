@@ -107,9 +107,14 @@ const useStyles = makeStyles({
   },
 });
 
-const FoodDialog = ({ open, handleClose }) => {
+const FoodDialog = ({
+  open, handleClose, servingQty = 0.5, servingWeightGrams = 112.1, calories = 253.99,
+}) => {
   const classes = useStyles();
   const [spinner, setSpinner] = useState(0);
+  const serveMultiplier = 1 / servingQty;
+  const servingGrams = serveMultiplier * servingWeightGrams;
+  const servingCalories = serveMultiplier * calories;
 
   const spinUp = () => {
     setSpinner((prev) => roundToDecimal(prev + 0.1));
@@ -155,11 +160,11 @@ const FoodDialog = ({ open, handleClose }) => {
           />
           <Box display="flex">
             <Box className={classes.info}>
-              <Typography className={classes.dataText} variant="h5">100</Typography>
+              <Typography className={classes.dataText} variant="h5">{Math.round(spinner * servingGrams)}</Typography>
               <Typography variant="subtitle2" className={classes.units}>grams</Typography>
             </Box>
             <Box className={classes.info} paddingLeft="30px">
-              <Typography className={classes.dataText} variant="h5">200</Typography>
+              <Typography className={classes.dataText} variant="h5">{Math.round(spinner * servingCalories)}</Typography>
               <Typography variant="subtitle2" className={classes.units}>calories</Typography>
             </Box>
           </Box>

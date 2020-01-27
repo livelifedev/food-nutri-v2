@@ -1,3 +1,4 @@
+// Key to free account
 const headers = {
   'Content-Type': 'application/json',
   'x-app-id': 'de0ce94b',

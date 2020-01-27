@@ -8,7 +8,7 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import SearchInput from './SearchInput';
 import SearchDropdown from './SearchDropdown';
 import AddButton from './AddButton';
-import { requestFood } from '../utils/api';
+import { requestFood } from '../utils/apis';
 
 const useStyles = makeStyles({
   wrapper: {
