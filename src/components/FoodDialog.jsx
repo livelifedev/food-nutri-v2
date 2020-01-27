@@ -22,11 +22,13 @@ const useStyles = makeStyles({
   },
   subtitle: {
     fontSize: '1.8rem',
+    textTransform: 'capitalize',
   },
   subtitle2: {
     color: '#797979',
     padding: '2px 0 5px 0',
     fontSize: '1.2rem',
+    textTransform: 'capitalize',
   },
   subtitle3: {
     color: '#797979',
@@ -107,10 +109,17 @@ const useStyles = makeStyles({
   },
 });
 
-const FoodDialog = ({
-  open, handleClose, servingQty = 0.5, servingWeightGrams = 112.1, calories = 253.99,
-}) => {
+const FoodDialog = ({ open, handleClose, foodData }) => {
   const classes = useStyles();
+  const {
+    food_name: foodName,
+    brand_name: brandName,
+    serving_qty: servingQty,
+    serving_unit: servingUnit,
+    serving_weight_grams: servingWeightGrams,
+    nf_calories: calories,
+    photo,
+  } = foodData;
   const [spinner, setSpinner] = useState(0);
   const serveMultiplier = 1 / servingQty;
   const servingGrams = serveMultiplier * servingWeightGrams;
@@ -142,9 +151,9 @@ const FoodDialog = ({
     <>
       <Dialog open={open} onClose={handleClose} PaperProps={{ className: classes.dialog }}>
         <Box className={classes.title}>
-          <Avatar variant="square" src="" className={classes.avatar}><BrokenImageIcon /></Avatar>
-          <Typography variant="h5" component="h2" className={classes.subtitle}>Food Dialog</Typography>
-          <Typography variant="h5" className={classes.subtitle2}>Type</Typography>
+          <Avatar variant="square" src={photo.thumb} className={classes.avatar}><BrokenImageIcon /></Avatar>
+          <Typography variant="h5" component="h2" className={classes.subtitle}>{foodName}</Typography>
+          {brandName ? <Typography variant="h5" className={classes.subtitle2}>{brandName}</Typography> : null}
         </Box>
 
         <CloseIcon className={classes.closeButton} onClick={handleClose} />
@@ -153,7 +162,7 @@ const FoodDialog = ({
           <TextField
             label="Servings"
             value={(spinner).toFixed(1)}
-            helperText="Units"
+            helperText={servingUnit}
             variant="filled"
             InputProps={inputProps}
             className={classes.servingsSelect}

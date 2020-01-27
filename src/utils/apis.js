@@ -25,3 +25,13 @@ export const requestFoodDetails = async (query) => {
 
   return response.json();
 };
+
+export const requestBrandedFood = async (query) => {
+  const url = `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${query}`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers,
+  });
+
+  return response.json();
+};

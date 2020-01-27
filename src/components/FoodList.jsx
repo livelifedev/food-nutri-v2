@@ -29,7 +29,7 @@ const FoodList = ({ title, foodList, handleOnClick }) => {
       <List>
         {foodList.map((item, index) => (
           <React.Fragment key={item.brand_name_item_name || item.food_name}>
-            <ListItem button onClick={handleOnClick}>
+            <ListItem button onClick={() => handleOnClick(item)}>
               <ListItemAvatar>
                 <Avatar variant="square" src={item.photo.thumb}><BrokenImageIcon /></Avatar>
               </ListItemAvatar>
