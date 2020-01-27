@@ -18,6 +18,7 @@ const useStyles = makeStyles({
   title: {
     display: 'flex',
     flexDirection: 'column',
+    marginBottom: '15px',
   },
   closeButton: {
     position: 'absolute',
