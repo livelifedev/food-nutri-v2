@@ -69,6 +69,7 @@ const useStyles = makeStyles({
     width: '20px',
     height: '20px',
     cursor: 'pointer',
+    color: '#6A6A6A',
   },
   arrowDown: {
     marginBottom: '-8px',
@@ -100,6 +101,9 @@ const useStyles = makeStyles({
   },
   dataText: {
     fontSize: '1.6rem',
+  },
+  units: {
+    color: '#797979',
   },
 });
 
@@ -152,11 +156,11 @@ const FoodDialog = ({ open, handleClose }) => {
           <Box display="flex">
             <Box className={classes.info}>
               <Typography className={classes.dataText} variant="h5">100</Typography>
-              <Typography variant="subtitle2">grams</Typography>
+              <Typography variant="subtitle2" className={classes.units}>grams</Typography>
             </Box>
-            <Box className={classes.info} paddingLeft="20px">
+            <Box className={classes.info} paddingLeft="30px">
               <Typography className={classes.dataText} variant="h5">200</Typography>
-              <Typography variant="subtitle2">calories</Typography>
+              <Typography variant="subtitle2" className={classes.units}>calories</Typography>
             </Box>
           </Box>
         </DialogContent>
