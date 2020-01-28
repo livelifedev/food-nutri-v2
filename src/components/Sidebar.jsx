@@ -32,8 +32,13 @@ const useStyles = makeStyles({
     lineHeight: '1',
     color: '#FFFFFF',
   },
+  dataTextTop: {
+    fontWeight: '500',
+    lineHeight: '1.3',
+  },
   dataText2: {
     lineHeight: '1.3',
+    color: '#797979',
   },
   divider: {
     margin: '30px 0',
@@ -111,11 +116,11 @@ const Sidebar = ({ intakeData, cycle, todaysIntake }) => {
       <Box className={classes.profileDetailsWrapper}>
         <Box className={classes.calInfoWrapper}>
           <Box className={classes.calInfo}>
-            <Typography className={classes.dataText2} variant="body1" align="left">{`${Math.round(caloriesMap.totalCals)} cal`}</Typography>
+            <Typography className={classes.dataTextTop} variant="h6" align="left">{`${Math.round(caloriesMap.totalCals)} cal`}</Typography>
             <Typography className={classes.dataText2} variant="caption" align="left">consumed</Typography>
           </Box>
           <Box className={classes.calInfo}>
-            <Typography className={classes.dataText2} variant="body1" align="right">{`${dailyGoal} cal`}</Typography>
+            <Typography className={classes.dataTextTop} variant="h6" align="right">{`${dailyGoal} cal`}</Typography>
             <Typography className={classes.dataText2} variant="caption" align="right">daily goal</Typography>
           </Box>
         </Box>
@@ -127,19 +132,19 @@ const Sidebar = ({ intakeData, cycle, todaysIntake }) => {
 
         <Box className={classes.mealsInfoWrapper}>
           <Box className={classes.mealsInfo}>
-            <Typography className={classes.dataText2} variant="body1">{Math.round(caloriesMap.breakfastCals)}</Typography>
+            <Typography className={classes.dataTextTop} variant="body1">{Math.round(caloriesMap.breakfastCals)}</Typography>
             <Typography className={classes.dataText2} variant="caption">Breakfast</Typography>
           </Box>
           <Box className={classes.mealsInfo}>
-            <Typography className={classes.dataText2} variant="body1">{Math.round(caloriesMap.lunchCals)}</Typography>
+            <Typography className={classes.dataTextTop} variant="body1">{Math.round(caloriesMap.lunchCals)}</Typography>
             <Typography className={classes.dataText2} variant="caption">Lunch</Typography>
           </Box>
           <Box className={classes.mealsInfo}>
-            <Typography className={classes.dataText2} variant="body1">{Math.round(caloriesMap.dinnerCals)}</Typography>
+            <Typography className={classes.dataTextTop} variant="body1">{Math.round(caloriesMap.dinnerCals)}</Typography>
             <Typography className={classes.dataText2} variant="caption">Dinner</Typography>
           </Box>
           <Box className={classes.mealsInfo}>
-            <Typography className={classes.dataText2} variant="body1">{Math.round(caloriesMap.snackCals)}</Typography>
+            <Typography className={classes.dataTextTop} variant="body1">{Math.round(caloriesMap.snackCals)}</Typography>
             <Typography className={classes.dataText2} variant="caption">Snack</Typography>
           </Box>
         </Box>
