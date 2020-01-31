@@ -10,6 +10,10 @@ const useStyles = makeStyles({
   primary: {
     fontWeight: '500',
   },
+  listAlign: {
+    textAlign: 'right',
+    paddingRight: '20px',
+  },
 });
 
 const Main = ({ intakeData, cycle, todaysIntake }) => {
@@ -30,6 +34,12 @@ const Main = ({ intakeData, cycle, todaysIntake }) => {
                 primary={item.food_name}
                 secondary={`${item.serving_size} ${item.serving_unit} (${item.serving_weight_grams} g)`}
                 classes={{ primary: classes.primary }}
+              />
+              <ListItemText
+                primary={`${Math.round(item.nf_calories * item.serving_size)} cal`}
+                secondary={item.meal_type}
+                classes={{ primary: classes.primary }}
+                className={classes.listAlign}
               />
             </ListItem>
             <Divider variant="inset" component="li" />
