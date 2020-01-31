@@ -9,6 +9,7 @@ import { addIdToList } from '../utils/helpers';
 const useStyles = makeStyles({
   primary: {
     fontWeight: '500',
+    textTransform: 'capitalize',
   },
   listAlign: {
     textAlign: 'right',
