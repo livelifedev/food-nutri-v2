@@ -12,11 +12,12 @@ export const mapCalories = (arr) => {
   };
 
   arr.forEach((item) => {
-    if (item.meal_type === 'breakfast') map.breakfastCals += item.nf_calories;
-    if (item.meal_type === 'lunch') map.lunchCals += item.nf_calories;
-    if (item.meal_type === 'dinner') map.dinnerCals += item.nf_calories;
-    if (item.meal_type === 'snack') map.snackCals += item.nf_calories;
-    map.totalCals += item.nf_calories;
+    const calories = item.nf_calories * item.serving_size;
+    if (item.meal_type === 'breakfast') map.breakfastCals += calories;
+    if (item.meal_type === 'lunch') map.lunchCals += calories;
+    if (item.meal_type === 'dinner') map.dinnerCals += calories;
+    if (item.meal_type === 'snack') map.snackCals += calories;
+    map.totalCals += calories;
   });
 
   return map;

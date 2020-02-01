@@ -65,9 +65,10 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   profileDetailsWrapper: {
-    padding: '0 15px',
+    padding: '0 25px',
   },
   percentage: {
+    width: 0,
     margin: '8px 0 0 -10px',
   },
   outerBar: {
@@ -80,6 +81,7 @@ const useStyles = makeStyles({
     transition: 'width 0.6s',
     height: '5px',
     backgroundColor: '#6202EE',
+    maxWidth: '100%',
   },
 });
 
