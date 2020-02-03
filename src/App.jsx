@@ -1,38 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Box } from '@material-ui/core';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Main from './components/Main';
+import Desktop from './Desktop';
+import Mobile from './Mobile';
 import mock from './mock';
 
-const useStyles = makeStyles({
-  wrapper: {
-    height: '100vh',
-  },
-  header: {
-    backgroundColor: '#6201EE',
-    height: '150px',
-  },
-  sidebar: {
-    backgroundColor: '#F5F5F5',
-    height: 'calc(100vh - 150px)',
-  },
-  main: {
-    backgroundColor: '#FFFFFF',
-    height: 'calc(100vh - 150px)',
-  },
-});
-
 const App = () => {
-  const classes = useStyles();
+  const isMobile = true;
   const { data_points: dataPoints } = mock;
   const [cyclePosition, setCyclePosition] = useState(0);
   const [dateText, setDateText] = useState('');
   const [todaysIntake, setTodaysIntake] = useState([]);
 
-  console.log('today', todaysIntake);
+  const props = {
+    cyclePosition, setCyclePosition, dataPoints, dateText, setTodaysIntake, todaysIntake,
+  };
 
   useEffect(() => {
     const date = moment().subtract(cyclePosition, 'days');
@@ -44,27 +25,7 @@ const App = () => {
     }
   }, [cyclePosition]);
 
-  return (
-    <Box>
-      <Box className={classes.header}>
-        <Header
-          cyclePosition={cyclePosition}
-          setCyclePosition={setCyclePosition}
-          cycleLength={dataPoints.length - 1}
-          dateText={dateText}
-          setTodaysIntake={setTodaysIntake}
-        />
-      </Box>
-      <Grid container className={classes.sidebar}>
-        <Grid item xs={4}>
-          <Sidebar intakeData={dataPoints} cycle={cyclePosition} todaysIntake={todaysIntake} />
-        </Grid>
-        <Grid item xs={8} className={classes.main}>
-          <Main intakeData={dataPoints} cycle={cyclePosition} todaysIntake={todaysIntake} />
-        </Grid>
-      </Grid>
-    </Box>
-  );
+  return isMobile ? <Mobile props={props} /> : <Desktop props={props} />;
 };
 
 export default App;
