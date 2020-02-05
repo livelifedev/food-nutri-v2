@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import moment from 'moment';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
 import mock from './mock';
 
 const App = () => {
-  const isMobile = true;
+  const isDesktop = useMediaQuery('(min-width:640px)');
   const { data_points: dataPoints } = mock;
   const [cyclePosition, setCyclePosition] = useState(0);
   const [dateText, setDateText] = useState('');
@@ -25,7 +26,7 @@ const App = () => {
     }
   }, [cyclePosition]);
 
-  return isMobile ? <Mobile props={props} /> : <Desktop props={props} />;
+  return isDesktop ? <Desktop props={props} /> : <Mobile props={props} />;
 };
 
 export default App;

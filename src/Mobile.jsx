@@ -1,25 +1,22 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Box } from '@material-ui/core';
+import { Grid, Divider, Box } from '@material-ui/core';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
 
 const useStyles = makeStyles({
-  wrapper: {
-    height: '100vh',
-  },
   header: {
     backgroundColor: '#6201EE',
     height: '150px',
   },
-  sidebar: {
+  main: {
     backgroundColor: '#F5F5F5',
     height: 'calc(100vh - 150px)',
+    overflowY: 'scroll',
   },
-  main: {
-    backgroundColor: '#FFFFFF',
-    height: 'calc(100vh - 150px)',
+  divider: {
+    margin: '30px 0 10px 0',
   },
 });
 
@@ -40,11 +37,12 @@ const Mobile = ({ props }) => {
           setTodaysIntake={setTodaysIntake}
         />
       </Box>
-      <Grid container className={classes.sidebar}>
-        <Grid item xs={4}>
+      <Grid container className={classes.main}>
+        <Grid item xs={12}>
           <Sidebar intakeData={dataPoints} cycle={cyclePosition} todaysIntake={todaysIntake} />
+          <Divider className={classes.divider} />
         </Grid>
-        <Grid item xs={8} className={classes.main}>
+        <Grid item xs={12}>
           <Main intakeData={dataPoints} cycle={cyclePosition} todaysIntake={todaysIntake} />
         </Grid>
       </Grid>

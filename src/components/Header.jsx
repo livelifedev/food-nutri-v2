@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     maxWidth: '450px',
     margin: 'auto',
     height: '100%',
+    padding: '0 4px',
   },
   nav: {
     display: 'flex',
@@ -33,6 +34,7 @@ const useStyles = makeStyles({
     maxWidth: '450px',
     margin: 'auto',
     outline: 'none',
+    padding: '0 4px',
   },
 });
 
