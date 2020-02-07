@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     height: '100vh',
   },
   header: {
-    backgroundColor: '#6201EE',
+    backgroundColor: '#D92C41',
     height: '150px',
   },
   sidebar: {

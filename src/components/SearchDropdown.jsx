@@ -64,7 +64,15 @@ const SearchDropdown = ({ commonFood, brandedFood, setTodaysIntake }) => {
         {brandFoodLength ? <FoodList title="Branded" foodList={brandedFood} handleOnClick={handleOnClick} /> : null}
       </Paper>
 
-      {foodData ? <FoodDialog open={openDialog} handleClose={handleClose} handleOnSubmit={handleOnSubmit} foodData={foodData} /> : null}
+      {foodData
+        ? (
+          <FoodDialog
+            open={openDialog}
+            handleClose={handleClose}
+            handleOnSubmit={handleOnSubmit}
+            foodData={foodData}
+          />
+        ) : null}
     </>
   );
 };

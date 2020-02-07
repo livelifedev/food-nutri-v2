@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Dialog, DialogActions, DialogContent, Typography, Avatar, TextField, MenuItem, InputBase, Select, Button, InputAdornment, Box,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Typography,
+  Avatar,
+  TextField,
+  MenuItem,
+  InputBase,
+  Select,
+  Button,
+  InputAdornment,
+  Box,
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import BrokenImageIcon from '@material-ui/icons/BrokenImage';
@@ -39,7 +50,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     right: '16px',
     top: '16px',
-    color: '#6202EE',
+    color: '#D92C41',
     cursor: 'pointer',
   },
   avatar: {
@@ -48,7 +59,7 @@ const useStyles = makeStyles({
     marginBottom: '10px',
   },
   addButton: {
-    backgroundColor: '#6202EE',
+    backgroundColor: '#D92C41',
     color: '#FFFFFF',
   },
   selectDropdown: {
@@ -79,10 +90,10 @@ const useStyles = makeStyles({
   servingsSelect: {
     width: '120px',
     '& label.Mui-focused': {
-      color: '#6202EE',
+      color: '#D92C41',
     },
     '& .MuiFilledInput-underline:after': {
-      borderBottomColor: '#6202EE',
+      borderBottomColor: '#D92C41',
     },
   },
   servingsContainer: {

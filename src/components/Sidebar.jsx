@@ -49,12 +49,12 @@ const useStyles = makeStyles({
     display: 'flex',
     height: '5px',
     width: '100%',
-    backgroundColor: '#DAC2FB',
+    backgroundColor: '#FCD5AF',
   },
   innerBar: {
     transition: 'width 0.6s',
     height: '5px',
-    backgroundColor: '#6202EE',
+    backgroundColor: '#D92C41',
     maxWidth: '100%',
   },
 });

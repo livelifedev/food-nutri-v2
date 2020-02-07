@@ -21,10 +21,10 @@
 //      Two serves of Chicken Salad 0.5 cup, which is 1 cup. Rounding to integer is 224 grams and 508 calories.
 
 const mock = {
-  first_name: 'Jane',
-  last_name: 'Appleseed',
-  height_cm: 163,
-  weight_kg: 57,
+  first_name: 'John',
+  last_name: 'Rubio',
+  height_cm: 176,
+  weight_kg: 80,
   daily_goal: 1500,
   data_points: [
     {

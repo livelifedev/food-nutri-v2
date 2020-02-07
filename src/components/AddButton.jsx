@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     bottom: '20px',
   },
   buttonWrapper: {
-    backgroundColor: '#6202EE',
+    backgroundColor: '#D92C41',
   },
   colorPrimary: {
     color: '#FFFFFF',

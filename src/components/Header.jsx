@@ -55,7 +55,6 @@ const Header = ({
 
       setCommonFood(common);
       setBrandedFood(branded);
-      console.log(common, branded);
     }
   }, 150);
 
@@ -108,17 +107,37 @@ const Header = ({
   return (
     <>
       <Box className={classes.wrapper}>
-        <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus={false} />
+        <SearchInput
+          handleOnChange={handleOnChange}
+          handleOpen={handleOpen}
+          searchInput={searchInput}
+          autoFocus={false}
+        />
+
         <Modal open={open} onClose={handleClose}>
           <Box className={classes.modalWrapper}>
-            <SearchInput handleOnChange={handleOnChange} handleOpen={handleOpen} searchInput={searchInput} autoFocus />
-            <SearchDropdown commonFood={commonFood} brandedFood={brandedFood} setTodaysIntake={setTodaysIntake} />
+            <SearchInput
+              handleOnChange={handleOnChange}
+              handleOpen={handleOpen}
+              searchInput={searchInput}
+              autoFocus
+            />
+            <SearchDropdown
+              commonFood={commonFood}
+              brandedFood={brandedFood}
+              setTodaysIntake={setTodaysIntake}
+            />
           </Box>
         </Modal>
+
         <Box className={classes.nav}>
-          <IconButton onClick={cycleBack}><NavigateBeforeIcon className={classes.colorPrimary} /></IconButton>
+          <IconButton onClick={cycleBack}>
+            <NavigateBeforeIcon className={classes.colorPrimary} />
+          </IconButton>
           <Typography align="center" variant="h4" component="h2" className={classes.colorPrimary}>{dateText}</Typography>
-          <IconButton onClick={cycleForward}><NavigateNextIcon className={classes.colorPrimary} /></IconButton>
+          <IconButton onClick={cycleForward}>
+            <NavigateNextIcon className={classes.colorPrimary} />
+          </IconButton>
         </Box>
       </Box>
 

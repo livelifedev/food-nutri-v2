@@ -7,7 +7,7 @@ import Main from './components/Main';
 
 const useStyles = makeStyles({
   header: {
-    backgroundColor: '#6201EE',
+    backgroundColor: '#D92C41',
     height: '150px',
   },
   main: {
