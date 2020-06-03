@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Divider, Box } from '@material-ui/core';
 import ProfileDisplay from './ProfileDisplay';
@@ -62,9 +62,17 @@ const useStyles = makeStyles({
 const Sidebar = ({ intakeData, cycle, todaysIntake }) => {
   const classes = useStyles();
   const { daily_goal: dailyGoal } = mock;
+  const [caloriesMap, setCaloriesMap] = useState([]);
+  const [percentage, setPercentage] = useState(0);
   const intake = cycle ? intakeData[cycle].intake_list : todaysIntake;
-  const caloriesMap = mapCalories(intake);
-  const percentage = calcPercent(caloriesMap.totalCals, dailyGoal);
+
+  useEffect(() => {
+    const mappedCalories = mapCalories(intake);
+    const progress = calcPercent(mappedCalories.totalCals, dailyGoal);
+
+    setCaloriesMap(mappedCalories);
+    setPercentage(progress);
+  }, [intake, dailyGoal]);
 
   return (
     <>

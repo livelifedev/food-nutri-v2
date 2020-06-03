@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   List, ListItem, ListItemText, ListItemAvatar, Avatar, Divider, Box,
@@ -19,13 +19,19 @@ const useStyles = makeStyles({
 
 const Main = ({ intakeData, cycle, todaysIntake }) => {
   const classes = useStyles();
+  const [intakeList, setIntakeList] = useState([]);
   const intake = cycle ? intakeData[cycle].intake_list : todaysIntake;
-  const mappedIntakeList = addIdToList(intake);
+
+  useEffect(() => {
+    const mappedIntakeList = addIdToList(intake);
+
+    setIntakeList(mappedIntakeList);
+  }, [intake]);
 
   return (
     <Box>
       <List>
-        {mappedIntakeList.map((item) => (
+        {intakeList.map((item) => (
           <React.Fragment key={item.id}>
             <ListItem>
               <ListItemAvatar>

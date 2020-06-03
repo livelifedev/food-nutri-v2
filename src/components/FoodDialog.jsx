@@ -216,7 +216,16 @@ const FoodDialog = ({
         </DialogContent>
 
         <DialogActions className={classes.buttonWrapper}>
-          <Button onClick={() => handleOnSubmit({ mealType, spinner })} variant="contained" className={classes.addButton}>Add</Button>
+          <Button
+            onClick={() => {
+              handleOnSubmit({ mealType, spinner });
+              setSpinner(0);
+            }}
+            variant="contained"
+            className={classes.addButton}
+          >
+            Add
+          </Button>
         </DialogActions>
       </Dialog>
     </>
