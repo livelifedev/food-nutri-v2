@@ -151,6 +151,11 @@ const FoodDialog = ({
     setMealType(event.target.value);
   };
 
+  const handleOnClose = () => {
+    setSpinner(0);
+    handleClose();
+  };
+
   const inputProps = {
     endAdornment: (
       <InputAdornment position="end">
@@ -167,14 +172,14 @@ const FoodDialog = ({
 
   return (
     <>
-      <Dialog open={open} onClose={handleClose} PaperProps={{ className: classes.dialog }}>
+      <Dialog open={open} onClose={handleOnClose} PaperProps={{ className: classes.dialog }}>
         <Box className={classes.title}>
           <Avatar variant="square" src={photo.thumb} className={classes.avatar}><BrokenImageIcon /></Avatar>
           <Typography variant="h5" component="h2" className={classes.subtitle}>{foodName}</Typography>
           {brandName ? <Typography variant="h5" className={classes.subtitle2}>{brandName}</Typography> : null}
         </Box>
 
-        <CloseIcon className={classes.closeButton} onClick={handleClose} />
+        <CloseIcon className={classes.closeButton} onClick={handleOnClose} />
 
         <DialogContent dividers className={`${classes.paddingNone} ${classes.servingsContainer}`}>
           <TextField

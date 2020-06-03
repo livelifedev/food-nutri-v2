@@ -62,7 +62,13 @@ const useStyles = makeStyles({
 const Sidebar = ({ intakeData, cycle, todaysIntake }) => {
   const classes = useStyles();
   const { daily_goal: dailyGoal } = mock;
-  const [caloriesMap, setCaloriesMap] = useState([]);
+  const [caloriesMap, setCaloriesMap] = useState({
+    breakfastCals: 0,
+    lunchCals: 0,
+    dinnerCals: 0,
+    snackCals: 0,
+    totalCals: 0,
+  });
   const [percentage, setPercentage] = useState(0);
   const intake = cycle ? intakeData[cycle].intake_list : todaysIntake;
 
