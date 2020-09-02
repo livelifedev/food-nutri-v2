@@ -1,58 +1,67 @@
 ## WIP
-Code test to build a demo nutrition/diet tracking app. 
+
+Code test to build a demo nutrition/diet tracking app.
 https://nutrition-demo-app.herokuapp.com/
 
+## Screens
+
+![Interface](screens/1.jpg)
+![Search list](screens/2.jpg)
+![Add item](screens/3.jpg)
 
 ## Notes:
+
 # API response structure
-  - common food, use food_name value and post to nutrients endpoint to get diet details
+
+- common food, use food_name value and post to nutrients endpoint to get diet details
   "common": [
-        {
-            "food_name": "tea",
-            "serving_unit": "fl oz",
-            "tag_name": "tea",
-            "serving_qty": 6,
-            "common_type": null,
-            "tag_id": "304",
-            "photo": {
-                "thumb": "https://d2xdmhkmkbyw75.cloudfront.net/304_thumb.jpg"
-            },
-            "locale": "en_US"
-        },
+  {
+  "food_name": "tea",
+  "serving_unit": "fl oz",
+  "tag_name": "tea",
+  "serving_qty": 6,
+  "common_type": null,
+  "tag_id": "304",
+  "photo": {
+  "thumb": "https://d2xdmhkmkbyw75.cloudfront.net/304_thumb.jpg"
+  },
+  "locale": "en_US"
+  },
   ]
 
-  - branded food, use nix_item_id value and post to nutrients endpoint to get diet details
+- branded food, use nix_item_id value and post to nutrients endpoint to get diet details
   "branded": [
-        {
-            "food_name": "Diet Green Tea, Citrus",
-            "serving_unit": "bottle",
-            "nix_brand_id": "51db37b2176fe9790a898523",
-            "brand_name_item_name": "Lipton Diet Green Tea, Citrus",
-            "serving_qty": 1,
-            "nf_calories": 0,
-            "photo": {
-                "thumb": "https://d1r9wva3zcpswd.cloudfront.net/5be3e2729d443d933047c38d.jpeg"
-            },
-            "brand_name": "Lipton",
-            "region": 1,
-            "brand_type": 2,
-            "nix_item_id": "5be3e2700ce406a76b4f1a0f",
-            "locale": "en_US"
-        },
+  {
+  "food_name": "Diet Green Tea, Citrus",
+  "serving_unit": "bottle",
+  "nix_brand_id": "51db37b2176fe9790a898523",
+  "brand_name_item_name": "Lipton Diet Green Tea, Citrus",
+  "serving_qty": 1,
+  "nf_calories": 0,
+  "photo": {
+  "thumb": "https://d1r9wva3zcpswd.cloudfront.net/5be3e2729d443d933047c38d.jpeg"
+  },
+  "brand_name": "Lipton",
+  "region": 1,
+  "brand_type": 2,
+  "nix_item_id": "5be3e2700ce406a76b4f1a0f",
+  "locale": "en_US"
+  },
   ]
 
-  # Understanding the food calorie calculation, data needed to calculate
+# Understanding the food calorie calculation, data needed to calculate
+
     - Take "chicken salad" for example:
       "serving_qty": 0.5,
       "serving_unit": "cup",
       "serving_weight_grams": 112.1,
       "nf_calories": 253.99,
       "serving_size" : 1,
-    
+
     - That translates into:
       Two serves of Chicken Salad 0.5 cup, which is 1 cup. Rounding to integer is 224 grams and 508 calories.
 
-    - if user enters 1.0 cup servings in app dialog, should produce 224g and 508cal as result 
+    - if user enters 1.0 cup servings in app dialog, should produce 224g and 508cal as result
       (1 / serving_qty) = serve value
       (serve value * serving_weight_grams)
       (serve value * nf_calories)
